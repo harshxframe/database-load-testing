@@ -1,3 +1,4 @@
+import { getDatabaseDetails } from "./databaseDetails.js";
 import { runReadTest } from "./read/readUsageTest.js";
 
 // Edit profile values here. Each profile becomes selectable by its array index.
@@ -89,6 +90,10 @@ function getEnvNumber(name, fallback) {
 }
 
 try {
+  const databaseDetails = await getDatabaseDetails();
+  console.log("\nDatabase details:");
+  console.dir(databaseDetails, { depth: null });
+
   const requestedIndex = process.env.PROFILE_INDEX;
   const profileIndexes =
     requestedIndex === undefined
